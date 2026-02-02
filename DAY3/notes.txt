@@ -1,0 +1,15 @@
+q1. Types of EC2 instances :
+1. Genral 
+2. Compute optimized 
+3. Memory
+4. Storage
+5. Accelerated 
+
+
+When login to server via terminal 
+
+
+ssh -i aws.pem ubuntu@12.3.4.5 
+Here you get permission denied because of too many permission open 
+
+chmod 600 aws.pem  : This give permission to owner to read and write but not other /group 
