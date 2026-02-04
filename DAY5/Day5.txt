@@ -1,0 +1,53 @@
+Route53: 
+AWS Route 53 is a managed DNS service that maps user-friendly domain names to numeric IP addresses. 
+It enables domain registration, manages hosted zones for DNS records, and performs health checks on servers to ensure traffic only reaches active applications.
+
+Flow diagram :
+
+            ┌──────────────────────┐
+            │        User          │
+            │   (Web Browser)      │
+            └─────────┬────────────┘
+                      │
+          1. DNS Query │ example.com
+                      ▼
+            ┌──────────────────────┐
+            │   Amazon Route 53    │
+            │   (DNS Resolver)    │
+            └─────────┬────────────┘
+                      │
+          2. Find Zone │
+                      ▼
+            ┌──────────────────────┐
+            │     Hosted Zone      │
+            │   example.com        │
+            └─────────┬────────────┘
+                      │
+          3. Match DNS │ Record
+                      ▼
+            ┌──────────────────────┐
+            │     DNS Record       │
+            │ A / ALIAS / CNAME    │
+            └─────────┬────────────┘
+                      │
+          4. Resolve   │ IP / Target
+                      ▼
+            ┌──────────────────────┐
+            │   AWS Resource       │
+            │  ALB / EC2 / CF     │
+            └──────────────────────┘
+
+
+
+
+Interview explain :
+“When a user enters a domain name like example.com, the browser sends a DNS query.
+Amazon Route 53 receives this request and checks the hosted zone associated with the domain.
+Inside the hosted zone, Route 53 looks for a matching DNS record (A, ALIAS, or CNAME).
+Once the record is found, Route 53 resolves the domain to the target resource such as an Application Load Balancer, EC2 instance, or CloudFront, and returns the IP or endpoint to the user.”
+
+
+
+FYQ :
+
+DNS translates human-readable domain names (like google.com) into IP addresses (like 142.250.190.14) that computers use to communicate.
